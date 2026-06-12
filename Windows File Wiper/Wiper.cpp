@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-void wipeFile(const std::wstring& path) {
+void wipefiles(const std::wstring& path) {
     HANDLE hFile = CreateFileW(path.c_str(), GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_FLAG_WRITE_THROUGH, NULL);
     if (hFile == INVALID_HANDLE_VALUE) return;
     LARGE_INTEGER size;
@@ -51,7 +51,7 @@ void wipeDir(const std::wstring& dir) {
         }
         else {
             SetFileAttributesW(full.c_str(), FILE_ATTRIBUTE_NORMAL);
-            wipeFile(full);
+            wipefiles(full);
         }
     } while (FindNextFileW(hFind, &fd));
     FindClose(hFind);
