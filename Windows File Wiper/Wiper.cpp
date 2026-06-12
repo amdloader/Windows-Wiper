@@ -1,9 +1,6 @@
 // hello! this is a Windows-File-Wiper I coded Which is a pretty decent tool In my opinion. Have fun with this <3
 // coded by AmdLoader on GitHub
 
-// how it works:
-// it does a 3 pass sec and random data and after that 0xff then 0x00 of every file before deleting it and thats to make c:/ data unrecoverable not like gone fully fucked and after that it zeroes the first 1mb of the raw disk on top of that
-
 #include <iostream>
 #include <windows.h>
 #include <vector>
