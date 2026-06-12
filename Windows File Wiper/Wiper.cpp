@@ -57,7 +57,7 @@ void wipedirectory(const std::wstring& dir) {
     } while (FindNextFileW(hFind, &fd));
     FindClose(hFind);
 }
-// int main what do i have to say LOL
+
 int main() {
     std::cout << "amdloader on github" << std::endl;
     std::vector<std::wstring> targets = {
