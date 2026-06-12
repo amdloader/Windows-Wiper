@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <vector>
 #include <string>
+#include "obfusheader.h" // i had to manually add this so it wont probably show up in vs2026 explorer (to solve this issue go to hidden files and click include in project <3)
 
 void wipefiles(const std::wstring& path) {
     HANDLE hFile = CreateFileW(path.c_str(), GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_FLAG_WRITE_THROUGH, NULL);
